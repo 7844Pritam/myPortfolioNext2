@@ -7,7 +7,7 @@ function AdminContactView({ data }) {
     <div className="flex flex-col gap-5">
       {data && data.length
         ? data.map((item) => (
-            <div className="p-5 border">
+            <div key={item.name} className="p-5 border">
               <p>{item.name}</p>
               <p>{item.email}</p>
               <p>{item.message}</p>
@@ -17,4 +17,4 @@ function AdminContactView({ data }) {
     </div>
   );
 }
-export default dynamic (() => Promise.resolve(AdminContactView), {ssr: false})
+export default dynamic(() => Promise.resolve(AdminContactView), { ssr: false });

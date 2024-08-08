@@ -5,16 +5,24 @@ import Footer from "@/components/client-view/footer";
 import ClientHomeView from "@/components/client-view/home";
 import ClientProjectView from "@/components/client-view/project";
 
-
 async function extractAllDatas(currentSection) {
-  const res = await fetch(`http://localhost:3000/api/${currentSection}/get`, {
-    method: "GET",
-    cache: "no-store",
-  });
-  const data = await res.json();
-  return data && data.data;
+  try {
+    const res = await fetch(`http://localhost:3000/api/${currentSection}/get`, {
+      method: "GET",
+      cache: "no-store", // Ensures fresh data is fetched every time
+    });
+    if (!res.ok) {
+      throw new Error(
+        `Error fetching ${currentSection} data: ${res.statusText}`
+      );
+    }
+    const data = await res.json();
+    return data?.data || [];
+  } catch (error) {
+    console.error("Error extracting data:", error);
+    return [];
+  }
 }
-
 
 export default async function Home() {
   const homeSectionData = await extractAllDatas("home");
@@ -27,9 +35,7 @@ export default async function Home() {
     <div className="bg-[#cdf8fa]">
       <ClientHomeView data={homeSectionData} />
       <ClientAboutView
-        data={
-          aboutSectionData && aboutSectionData.length ? aboutSectionData[0] : []
-        }
+        data={aboutSectionData.length ? aboutSectionData[0] : []}
       />
       <ClientExperienceAndEducationView
         educationData={educationSectionData}
@@ -37,7 +43,6 @@ export default async function Home() {
       />
       <ClientProjectView data={projectSectionData} />
       <ClientContactView />
-
       <Footer />
     </div>
   );

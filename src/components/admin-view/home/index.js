@@ -5,20 +5,22 @@ import FormControls from "../form-controls";
 
 const controls = [
   {
+    id: 111,
     name: "heading",
     placeholder: "Enter heading text",
     type: "text",
     label: "Enter heading text",
   },
   {
+    id: 222,
     name: "summary",
     placeholder: "Enter Career summary",
     type: "text",
     label: "Enter Career summary",
   },
 ];
- function AdminHomeView({ formData, setFormData, handleSaveData }) {
-  console.log(formData);
+function AdminHomeView({ formData, setFormData, handleSaveData }) {
+  // console.log(formData);
   return (
     <div className="w-full">
       <div className="bg-[#ffffff] shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -27,7 +29,10 @@ const controls = [
           formData={formData}
           setFormData={setFormData}
         />
-        <button onClick={()=>handleSaveData('home')} className="mt-[10px] border border-green-600 p-4 font-bold text-[16px]">
+        <button
+          onClick={() => handleSaveData("home")}
+          className="mt-[10px] border border-green-600 p-4 font-bold text-[16px]"
+        >
           Add Info
         </button>
       </div>
@@ -35,5 +40,4 @@ const controls = [
   );
 }
 
-
-export default dynamic (() => Promise.resolve(AdminHomeView), {ssr: false})
+export default dynamic(() => Promise.resolve(AdminHomeView), { ssr: false });

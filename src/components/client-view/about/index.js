@@ -33,7 +33,7 @@ const skillItemVariant = {
 };
 
 function ClientAboutView({ data }) {
-  console.log(data, "aboutdata");
+  // console.log(data, "aboutdata");
 
   const setVariants = useMemo(() => variants(), []);
 
@@ -55,15 +55,19 @@ function ClientAboutView({ data }) {
   const headingText = "Why Hire Me For Your Next Project ?";
 
   return (
-    <div className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto" id="about">
+    <div
+      className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
+      id="about"
+    >
       <div className="w-full flex">
         <AnimationWrapper className="rounded-lg w-full grid-flow-row grid grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-[#14cad0] bg-ehite-500 z-10">
           {aboutDataInfo.map((infoItem, index) => (
             <motion.div
               className={`flex items-center justify-start
-                ${index === 0
-                  ? "sm:justify-start"
-                  : index === 1
+                ${
+                  index === 0
+                    ? "sm:justify-start"
+                    : index === 1
                     ? "sm:justify-center"
                     : "sm:justify-end"
                 } py-4 sm:py-6 w-8/12 px-4 sm:w-auto mx-auto sm:mx-0
@@ -131,11 +135,10 @@ function ClientAboutView({ data }) {
               </motion.div>
             ))} */}
           </motion.div>
-
         </AnimationWrapper>
       </div>
     </div>
   );
 }
 
-export default dynamic (() => Promise.resolve(ClientAboutView), {ssr: false})
+export default dynamic(() => Promise.resolve(ClientAboutView), { ssr: false });

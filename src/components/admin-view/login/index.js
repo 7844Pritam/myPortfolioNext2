@@ -1,27 +1,31 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import FormControls from "../form-controls";
+
+// Ensure that FormControls is imported dynamically if needed
+const FormControls = dynamic(() => import("../form-controls"), { ssr: false });
 
 const controls = [
   {
+    id: 11,
     name: "username",
     placeholder: "Enter User name",
     type: "text",
-    label: "Enter User name",
+    label: "User name",
   },
   {
+    id: 22,
     name: "password",
     placeholder: "Enter Password",
     type: "password",
-    label: "Enter Password",
+    label: "Password",
   },
 ];
 
 function Login({ formData, setFormData, handleLogin }) {
   return (
     <div className="w-full">
-      <div className="bg-[#ffffff] shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <FormControls
           controls={controls}
           formData={formData}
@@ -29,7 +33,7 @@ function Login({ formData, setFormData, handleLogin }) {
         />
         <button
           onClick={handleLogin}
-          className="mt-[10px] border border-green-600 p-4 font-bold text-[16px]"
+          className="mt-2 border border-green-600 p-4 font-bold text-lg"
         >
           Login
         </button>
@@ -38,4 +42,5 @@ function Login({ formData, setFormData, handleLogin }) {
   );
 }
 
-export default dynamic (() => Promise.resolve(Login), {ssr: false})
+// Ensure that dynamic import is correctly handled
+export default dynamic(() => Promise.resolve(Login), { ssr: false });

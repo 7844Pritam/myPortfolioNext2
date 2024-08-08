@@ -49,12 +49,7 @@ const socialIcons = [
   // },
   {
     id: "linkedin",
-    icon: (
-      <FaLinkedinIn
-        color="#14cad0"
-        className="w-[40px] h-[40px] "
-      />
-    ),
+    icon: <FaLinkedinIn color="#14cad0" className="w-[40px] h-[40px] " />,
   },
   // {
   //   id: "instagram",
@@ -68,15 +63,9 @@ const socialIcons = [
   // },
   {
     id: "code",
-    icon: (
-      <FaCode
-        color="#14cad0"
-        className="w-[40px] h-[40px] "
-      />
-    ),
+    icon: <FaCode color="#14cad0" className="w-[40px] h-[40px] " />,
   },
 ];
-
 
 const socialLinks = {
   facebook: "https://www.facebook.com/your_facebook_username",
@@ -86,10 +75,8 @@ const socialLinks = {
   code: "https://leetcode.com/78pritam44",
 };
 
-
-
- function ClientHomeView({ data }) {
-  console.log(data, "ClientHomeView");
+function ClientHomeView({ data }) {
+  // console.log(data, "ClientHomeView");
 
   const setVariants = useMemo(() => variants(), []);
   const containerRef = useRef(null);
@@ -106,17 +93,16 @@ const socialLinks = {
           <div className="flex flex-col justify-center items-start row-start-2 sm:row-start-1">
             <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
               {data && data.length
-                ? data[0]?.heading
-                  .split(" ")
-                  .map((item, index) => (
+                ? data[0]?.heading.split(" ").map((item, index) => (
                     <span
-                    key={`${item}-${index}`}
-                      className={`${index === 3 || index === 4 || index === 5 || index === 6
-                        ? "text-[#14cad0]"
-                        : "text-[#000]"
-                        }`}
+                      key={`${item}-${index}`}
+                      className={`${
+                        index === 3 || index === 4 || index === 5 || index === 6
+                          ? "text-[#14cad0]"
+                          : "text-[#000]"
+                      }`}
                     >
-                      {item}{" "}
+                      {item}
                     </span>
                   ))
                 : null}
@@ -125,11 +111,8 @@ const socialLinks = {
               {data && data.length ? data[0]?.summary : null}
             </p>
             <motion.div className="flex gap-3 cursor-pointer">
-
               {socialIcons.map((item) => (
-
                 <motion.div
-
                   key={item.id}
                   initial={{ scale: 0 }}
                   animate={{ rotate: 360, scale: 1 }}
@@ -142,7 +125,6 @@ const socialLinks = {
                   whileHover={{ scale: 1.2, rotate: 360 }}
                   whileTap={{ scale: 0.8, rotate: -360, borderRadius: "100%" }}
                 >
-
                   <a
                     key={item.id}
                     href={socialLinks[item.id]}
@@ -151,12 +133,8 @@ const socialLinks = {
                   >
                     {item.icon}
                   </a>
-
-
                 </motion.div>
               ))}
-
-
             </motion.div>
           </div>
           <motion.div ref={containerRef} className="flex w-full justify-end">
@@ -182,4 +160,4 @@ const socialLinks = {
     </div>
   );
 }
-export default dynamic (() => Promise.resolve(ClientHomeView), {ssr: false})
+export default dynamic(() => Promise.resolve(ClientHomeView), { ssr: false });

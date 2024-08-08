@@ -9,17 +9,12 @@ import {
   TimelineSeparator,
 } from "@mui/lab";
 
-
-
 import AnimationWrapper from "../animation-wrapper";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
- function ClientExperienceAndEducationView({
-  educationData,
-  experienceData,
-}) {
-  console.log(educationData, experienceData, "experienceData");
+function ClientExperienceAndEducationView({ educationData, experienceData }) {
+  // console.log(educationData, experienceData, "experienceData");
 
   return (
     <div
@@ -51,7 +46,7 @@ import dynamic from "next/dynamic";
                   {experienceData && experienceData.length
                     ? experienceData.map((experienceItem, index) => (
                         <TimelineItem key={`experience-${index}`}>
-                          <TimelineSeparator >
+                          <TimelineSeparator>
                             <TimelineDot className="bg-[#14cad0]" />
                             <TimelineConnector className="bg-[#14cad0]" />
                           </TimelineSeparator>
@@ -102,17 +97,15 @@ import dynamic from "next/dynamic";
               <motion.div className="container">
                 <Timeline position="right">
                   {educationData && educationData.length
-                    ? educationData.map((educationItem,index) => (
-                        <TimelineItem  key={`education-${index}`} >
+                    ? educationData.map((educationItem, index) => (
+                        <TimelineItem key={`education-${index}`}>
                           <TimelineSeparator>
                             <TimelineDot className="bg-[#14cad0]" />
                             <TimelineConnector className="bg-[#14cad0]" />
                           </TimelineSeparator>
                           <TimelineContent>
                             <div className="border-[2px] p-4 rounded-[8px] border-[#14cad0] mt-[14px] ml-[16px]">
-                              <p className="font-bold">
-                                {educationItem.year}
-                              </p>
+                              <p className="font-bold">{educationItem.year}</p>
                               <h3 className="font-extrabold mt-2">
                                 {educationItem.college}
                               </h3>
@@ -134,4 +127,7 @@ import dynamic from "next/dynamic";
   );
 }
 
-export default dynamic (() => Promise.resolve(ClientExperienceAndEducationView), {ssr: false})
+export default dynamic(
+  () => Promise.resolve(ClientExperienceAndEducationView),
+  { ssr: false }
+);

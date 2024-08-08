@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import AnimationWrapper from "../animation-wrapper";
 import { addData } from "@/services";
 import dynamic from "next/dynamic";
@@ -32,40 +32,39 @@ const initialFormData = {
   message: "",
 };
 
- function ClientContactView() {
+function ClientContactView() {
   const [formData, setFormData] = useState(initialFormData);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  async function handleSendMessage() {
-    const res = await addData("contact", formData);
-    console.log(res, 'contact-res');
+  const handleSendMessage = useCallback(async () => {
+    try {
+      const res = await addData("contact", formData);
+      // console.log(res, "contact-res");
 
-    if (res && res.success) {
-      setFormData(initialFormData)
-      setShowSuccessMessage(true)
+      if (res && res.success) {
+        setFormData(initialFormData);
+        setShowSuccessMessage(true);
+      }
+    } catch (error) {
+      console.error("Failed to send message:", error);
     }
-  }
+  }, [formData]);
 
   useEffect(() => {
-    
     if (showSuccessMessage) {
-      setTimeout(() => {
-        setShowSuccessMessage(false)
-      }, 1500)
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 1500);
+
+      return () => clearTimeout(timer); // Cleanup timer on unmount
     }
+  }, [showSuccessMessage]);
 
-  }, [showSuccessMessage])
-
-  const isValidForm = () => {
-    return formData &&
-      formData.name !== "" &&
-      formData.email !== "" &&
-      formData.message !== ""
-      ? true
-      : false;
-  };
-
-  console.log(isValidForm(), 'isValidForm()');
+  const isValidForm = useCallback(() => {
+    return (
+      formData.name !== "" && formData.email !== "" && formData.message !== ""
+    );
+  }, [formData]);
 
   return (
     <div
@@ -93,7 +92,9 @@ const initialFormData = {
               {controls.map((controlItem, index) => (
                 <div key={index} className="p-2 w-full">
                   <div className="relative">
-                    <label className="text-sm text-[#000]">{controlItem.label}</label>
+                    <label className="text-sm text-[#000]">
+                      {controlItem.label}
+                    </label>
                     {controlItem.name === "message" ? (
                       <textarea
                         id={controlItem.name}
@@ -105,7 +106,7 @@ const initialFormData = {
                             [controlItem.name]: e.target.value,
                           })
                         }
-                        className="w-full border-[#14cad0] border-[2px] bg-[#ffffff] rounded  h-32 text-base outline-none text-[#000000] py-1 px-3 resize-none leading-6"
+                        className="w-full border-[#14cad0] border-[2px] bg-[#ffffff] rounded h-32 text-base outline-none text-[#000000] py-1 px-3 resize-none leading-6"
                       />
                     ) : (
                       <input
@@ -118,13 +119,17 @@ const initialFormData = {
                             [controlItem.name]: e.target.value,
                           })
                         }
-                        className="w-full border-[#14cad0] border-[2px] bg-[#ffffff] rounded  text-base outline-none text-[#000000] py-1 px-3 leading-6"
+                        className="w-full border-[#14cad0] border-[2px] bg-[#ffffff] rounded text-base outline-none text-[#000000] py-1 px-3 leading-6"
                       />
                     )}
                   </div>
                 </div>
               ))}
-              {showSuccessMessage && <p className="text-[14px] font-bold my-[8px]">Your message is successfully delivered !</p>}
+              {showSuccessMessage && (
+                <p className="text-[14px] font-bold my-[8px]">
+                  Your message was successfully delivered!
+                </p>
+              )}
               <div className="p-2 w-full">
                 <button
                   disabled={!isValidForm()}
@@ -142,4 +147,6 @@ const initialFormData = {
   );
 }
 
-export default dynamic (() => Promise.resolve(ClientContactView), {ssr: false})
+export default dynamic(() => Promise.resolve(ClientContactView), {
+  ssr: false,
+});

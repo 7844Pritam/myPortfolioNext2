@@ -65,7 +65,6 @@ function AdminView() {
     initialProjectFormData
   );
 
-
   const [allData, setAllData] = useState({});
   const [update, setUpdate] = useState(false);
   const [authUser, setAuthUser] = useState(false);
@@ -133,9 +132,7 @@ function AdminView() {
     {
       id: "contact",
       label: "Contact",
-      component: <AdminContactView
-        data={allData && allData?.contact}
-      />,
+      component: <AdminContactView data={allData && allData?.contact} />,
     },
   ];
 
@@ -170,8 +167,7 @@ function AdminView() {
     }
   }
 
-  console.log(allData, 'allData');
-
+  // console.log(allData, "allData");
 
   async function handleSaveData() {
     const dataMap = {
@@ -185,7 +181,7 @@ function AdminView() {
     const response = update
       ? await updateData(currentSelectedTab, dataMap[currentSelectedTab])
       : await addData(currentSelectedTab, dataMap[currentSelectedTab]);
-    console.log(response, "response");
+    // console.log(response, "response");
 
     if (response.success) {
       resetFormDatas();
@@ -197,10 +193,6 @@ function AdminView() {
     extractAllDatas();
   }, [currentSelectedTab]);
 
-
-
-
-
   function resetFormDatas() {
     setHomeViewFormData(initialHomeFormData);
     setAboutViewFormData(initialAboutFormData);
@@ -209,7 +201,7 @@ function AdminView() {
     setProjectViewFormData(initialProjectFormData);
   }
 
-  console.log(allData, homeViewFormData, "homeViewFormData");
+  // console.log(allData, homeViewFormData, "homeViewFormData");
 
   useEffect(() => {
     setAuthUser(JSON.parse(sessionStorage.getItem("authUser")));
@@ -218,7 +210,7 @@ function AdminView() {
   async function handleLogin() {
     const res = await login(loginFormData);
 
-    console.log(res, "login");
+    // console.log(res, "login");
 
     if (res?.success) {
       setAuthUser(true);
@@ -264,8 +256,6 @@ function AdminView() {
         </button>
       </nav>
 
-
-
       <div className="mt-10 p-10">
         {menuItems.map(
           (item) =>
@@ -274,11 +264,8 @@ function AdminView() {
             )
         )}
       </div>
-
-
-
     </div>
   );
 }
 
-export default dynamic (() => Promise.resolve(AdminView), {ssr: false})
+export default dynamic(() => Promise.resolve(AdminView), { ssr: false });
