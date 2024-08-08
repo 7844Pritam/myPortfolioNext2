@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-const MONGO_URI =
-  "mongodb+srv://pritamsharma7844:pritam7844@pritamportfolio.nz4himk.mongodb.net/my-data";
+// Access the MongoDB URI from environment variables
+const MONGO_URI = process.env.MONGO_URI;
 
 let isConnected = false; // Track connection status
 
