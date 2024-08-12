@@ -61,10 +61,10 @@ function Navbar() {
         <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4 bg-[#cdf8fa]">
           <div className="col-start-1 col-end-2 flex items-center">
             <div className="cursor-pointer flex gap-2 font-bold items-center text-[20px] text-[#038990]">
-              <div className="w-[40px] h-[40px] flex justify-center items-center p-3 rounded-[8px] border-[#14cad0] bg-[#007a7e]">
+              <div className="w-[40px] h-[40px] flex justify-center items-center p-3  border-[#14cad0] bg-[#007a7e]">
                 <span className="text-[#fff] text-[25px] font-bold">P</span>
               </div>
-              Portfolio
+              Pritam
             </div>
           </div>
           <ul className="hidden lg:flex col-start-4 col-end-8 text-[#14cad0] items-center">
