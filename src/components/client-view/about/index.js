@@ -60,7 +60,7 @@ function ClientAboutView({ data }) {
       id="about"
     >
       <div className="w-full flex">
-        <AnimationWrapper className="rounded-lg w-full grid-flow-row grid grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-[#14cad0] bg-ehite-500 z-10">
+        <AnimationWrapper className="rounded-lg w-full grid-flow-row grid grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-primary bg-ehite-500 z-10">
           {aboutDataInfo.map((infoItem, index) => (
             <motion.div
               className={`flex items-center justify-start
@@ -78,10 +78,10 @@ function ClientAboutView({ data }) {
             >
               <div className="flex m-0 w-40 sm:w-auto">
                 <div className="flex flex-col">
-                  <p className="text-[50px] text-[#14cad0] font-bold">
+                  <p className="text-[50px] text-middle font-bold">
                     {infoItem.value}+
                   </p>
-                  <p className="text-[25px] font-bold text-[#000000]">
+                  <p className="text-[25px] font-bold text-primary">
                     {infoItem.label}
                   </p>
                 </div>
@@ -92,11 +92,11 @@ function ClientAboutView({ data }) {
       </div>
       <AnimationWrapper className={"pt-6"}>
         <div className="flex flex-col justify-center items-center row-start-2 sm:row-start-1">
-          <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl font-medium">
+          <h1 className="leading-[70px] mb-4 text-3xl lg:text-4xl xl:text-5xl text-primary font-medium">
             {headingText.split(" ").map((item, index) => (
               <span
                 key={index}
-                className={`${index === 6 ? "text-[#14cad0]" : "text-[#000]"}`}
+                className={`${index === 6 ? "text-primary" : "text-primary"}`}
               >
                 {item}{" "}
               </span>
@@ -129,7 +129,7 @@ function ClientAboutView({ data }) {
                 variants={skillItemVariant}
                 key={`skill-${skillIndex}`} // Using unique keys here
               >
-                <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[160px] px-6 border-[2px] border-[#14cad0] bg-[#fff] text-[#000] font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-main transition-all outline-none">
+                <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[160px] px-6 border-[2px] border-middle bg-[#fff] text-[#000] font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-main transition-all outline-none">
                   {skill}
                 </button>
               </motion.div>

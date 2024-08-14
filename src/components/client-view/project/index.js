@@ -24,7 +24,7 @@ import dynamic from "next/dynamic";
             {"My Projects".split(" ").map((item, index) => (
               <span
                 key={`word-${index}`}
-                className={`${index === 1 ? "text-[#14cad0]" : "text-[#000]"}`}
+                className={`${index === 1 ? "text-middle" : "text-[#000]"}`}
               >
                 {item}{" "}
               </span>
@@ -36,14 +36,14 @@ import dynamic from "next/dynamic";
               cy={"50"}
               r="30"
               pathLength={"1"}
-              className="stroke-[#a7ebf1]"
+              className="stroke-middle"
             />
             <motion.circle
               cx={"50"}
               cy={"50"}
               r="30"
               pathLength={"1"}
-              className="stroke-[#00f2ff]"
+              className="stroke-primary"
               style={{ pathLength: scrollXProgress }}
             />
           </svg>
@@ -60,7 +60,7 @@ import dynamic from "next/dynamic";
                 key={item.id || index}
               >
 
-                <div className="border-2 w-full relative border-[#14cad0] transition-all rounded-lg flex flex-col">
+                <div className="border-2 w-full relative border-middle transition-all rounded-lg flex flex-col">
                   <div className="flex p-4 flex-col xl:flex-row w-full items-stretch xl:items-center">
                     <div className="flex order-2 xl:order-1">
                       <div className="flex flex-col">
@@ -76,7 +76,7 @@ import dynamic from "next/dynamic";
                               className="w-full flex justify-start items-center"
                               key={`${techItem.id}-${techIndex}`}
                             >
-                              <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[120px]  px-6 border-[2px] border-[#14cad0] bg-[#fff] text-[#000] font-semibold rounded-lg text-xs tracking-widest hover:border-[#426566] transition-all outline-none">
+                              <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[120px]  px-6 border-[2px] border-middle bg-[#fff] text-[#000] font-semibold rounded-lg text-xs tracking-widest hover:border-[#426566] transition-all outline-none">
                                 {techItem}
                               </button>
                             </div>
@@ -88,13 +88,13 @@ import dynamic from "next/dynamic";
                   <div className="absolute w-full bottom-0 justify-center flex gap-2">
                     <button
                       onClick={() => router.push(item.website)}
-                      className="p-2 text-white-500 font-semibold text-[14px] tracking-widest bg-[#14cad0] transition-all outline-none"
+                      className="p-2 text-white-500 font-semibold text-[14px] tracking-widest bg-middle transition-all outline-none"
                     >
                       Website
                     </button>
                     <button
                       onClick={() => router.push(item.github)}
-                      className="p-2 text-white-500 font-semibold text-[14px] tracking-widest bg-[#14cad0] transition-all outline-none"
+                      className="p-2 text-white-500 font-semibold text-[14px] tracking-widest bg-middle transition-all outline-none"
                     >
                       Github
                     </button>

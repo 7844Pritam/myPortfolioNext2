@@ -77,7 +77,7 @@ function ClientContactView() {
             {"Contact Me".split(" ").map((item, index) => (
               <span
                 key={index}
-                className={`${index === 1 ? "text-[#14cad0]" : "text-[#000]"}`}
+                className={`${index === 1 ? "text-middle" : "text-primary"}`}
               >
                 {item}{" "}
               </span>
@@ -106,7 +106,7 @@ function ClientContactView() {
                             [controlItem.name]: e.target.value,
                           })
                         }
-                        className="w-full border-[#14cad0] border-[2px] bg-[#ffffff] rounded h-32 text-base outline-none text-[#000000] py-1 px-3 resize-none leading-6"
+                        className="w-full border-middle border-[2px] bg-[#ffffff] rounded h-32 text-base outline-none text-[#000000] py-1 px-3 resize-none leading-6"
                       />
                     ) : (
                       <input
@@ -119,7 +119,7 @@ function ClientContactView() {
                             [controlItem.name]: e.target.value,
                           })
                         }
-                        className="w-full border-[#14cad0] border-[2px] bg-[#ffffff] rounded text-base outline-none text-[#000000] py-1 px-3 leading-6"
+                        className="w-full border-middle border-[2px] bg-[#ffffff] rounded text-base outline-none text-[#000000] py-1 px-3 leading-6"
                       />
                     )}
                   </div>
@@ -134,7 +134,7 @@ function ClientContactView() {
                 <button
                   disabled={!isValidForm()}
                   onClick={handleSendMessage}
-                  className="disabled:opacity-50 py-3 lg:py-4 px-12 lg:px-16 text-white-500 font-semibold rounded-lg text-2xl tracking-widest bg-[#14cad0] outline-none"
+                  className="disabled:opacity-50 py-3 lg:py-4 px-12 lg:px-16 text-white-500 font-semibold rounded-lg text-2xl tracking-widest bg-primary outline-none"
                 >
                   Send Message
                 </button>

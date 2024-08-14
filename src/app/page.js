@@ -33,7 +33,7 @@ export default async function Home() {
   const projectSectionData = await extractAllDatas("project");
 
   return (
-    <div className="bg-[#cdf8fa]">
+    <div className="bg-secondary">
       <ClientHomeView data={homeSectionData} />
       <ClientAboutView
         data={aboutSectionData.length ? aboutSectionData[0] : []}

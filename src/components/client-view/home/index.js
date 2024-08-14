@@ -34,23 +34,23 @@ function variants() {
 const socialIcons = [
   {
     id: "facebook",
-    icon: <FaFacebookF color="#14cad0" className="w-[40px] h-[40px] " />,
+    icon: <FaFacebookF className="w-[40px] h-[40px] text-primary " />,
   },
   {
     id: "twitter",
-    icon: <FaTwitter color="#14cad0" className="w-[40px] h-[40px] " />,
+    icon: <FaTwitter  className="w-[40px] h-[40px] text-primary " />,
   },
   {
     id: "linkedin",
-    icon: <FaLinkedinIn color="#14cad0" className="w-[40px] h-[40px] " />,
+    icon: <FaLinkedinIn  className="w-[40px] h-[40px] text-primary  " />,
   },
   {
     id: "instagram",
-    icon: <FaInstagram color="#14cad0" className="w-[40px] h-[40px] " />,
-  },
+    icon: <FaInstagram className="w-[40px] h-[40px] text-primary  " />,
+  },  
   {
     id: "code",
-    icon: <FaCode color="#14cad0" className="w-[40px] h-[40px] " />,
+    icon: <FaCode  className="w-[40px] h-[40px] text-primary " />,
   },
 ];
 
@@ -63,7 +63,8 @@ const socialLinks = {
 };
 
 function ClientHomeView({ data }) {
-  // console.log(data, "ClientHomeView");
+  console.log(data[0].heading, "ClientHomeView");
+
 
   const setVariants = useMemo(() => variants(), []);
   const containerRef = useRef(null);
@@ -77,22 +78,34 @@ function ClientHomeView({ data }) {
           }
           variants={setVariants}
         >
-          <div className="flex flex-col justify-center items-start row-start-2 sm:row-start-1">
+          <div className="flex flex-col   justify-center items-start row-start-2 sm:row-start-1">
             <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
-              {data && data.length
+              {/* {data && data.length
                 ? data[0]?.heading.split(" ").map((item, index) => (
                     <span
                       key={`${item}-${index}`}
                       className={`${
                         index === 3 || index === 4 || index === 5 || index === 6
-                          ? "text-[#14cad0]"
+                          ? "text-middle"
                           : "text-[#000]"
                       }`}
+                    > */}
+
+                      <span
+                     className="text-white-300 font-bold"
                     >
-                      {item}
+
+
+                      {data[0].heading}
+
                     </span>
+
+
+
+                      
+                    {/* </span>
                   ))
-                : null}
+                : null} */}
             </h1>
             <p className="text-[#000] mt-4 mb-8 font-bold">
               {data && data.length ? data[0]?.summary : null}
@@ -128,7 +141,7 @@ function ClientHomeView({ data }) {
             <motion.div
               drag
               dragConstraints={containerRef}
-              className="w-[400px] h-[400px] relative bg-[#14cad0]"
+              className="w-[400px] h-[400px] relative bg-secondary"
             >
               <div className="w-[400px] h-[400px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
               <Image

@@ -21,6 +21,9 @@ module.exports = {
     },
     colors: {
       transparent: "transparent",
+      primary:"#181617",
+      secondary:"#464539",
+      middle:"#704636",
       black: {
         900 : "#000000",
         500: "#4F5665",
