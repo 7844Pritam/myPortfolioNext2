@@ -3,13 +3,7 @@
 import { useMemo, useRef } from "react";
 import AnimationWrapper from "../animation-wrapper";
 import { motion } from "framer-motion";
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaInstagram,
-  FaTwitter,
-  FaCode,
-} from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter, FaCode } from "react-icons/fa";
 import Image from "next/image";
 import aiImage from "../../../assets/ai-image.png";
 import dynamic from "next/dynamic";
@@ -38,19 +32,19 @@ const socialIcons = [
   },
   {
     id: "twitter",
-    icon: <FaTwitter  className="w-[40px] h-[40px] text-primary " />,
+    icon: <FaTwitter className="w-[40px] h-[40px] text-primary " />,
   },
   {
     id: "linkedin",
-    icon: <FaLinkedinIn  className="w-[40px] h-[40px] text-primary  " />,
+    icon: <FaLinkedinIn className="w-[40px] h-[40px] text-primary  " />,
   },
   {
     id: "instagram",
     icon: <FaInstagram className="w-[40px] h-[40px] text-primary  " />,
-  },  
+  },
   {
     id: "code",
-    icon: <FaCode  className="w-[40px] h-[40px] text-primary " />,
+    icon: <FaCode className="w-[40px] h-[40px] text-primary " />,
   },
 ];
 
@@ -63,50 +57,26 @@ const socialLinks = {
 };
 
 function ClientHomeView({ data }) {
-  console.log(data[0].heading, "ClientHomeView");
-
-
   const setVariants = useMemo(() => variants(), []);
   const containerRef = useRef(null);
 
   return (
-    <div className="max-w-screen-xl mt-24 px-8 xl:px-16 mx-auto" id="home">
+    <div className="max-w-screen-xl mx-auto mt-24 px-8 xl:px-16" id="home">
       <AnimationWrapper>
         <motion.div
-          className={
-            "grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-6 sm:py-16"
-          }
+          className="flex flex-col sm:flex-row justify-center gap-8 py-6 sm:py-16"
           variants={setVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <div className="flex flex-col   justify-center items-start row-start-2 sm:row-start-1">
-            <h1 className="mb-4 text-3xl lg:text-4xl xl:text-6xl font-medium leading-normal">
-              {/* {data && data.length
-                ? data[0]?.heading.split(" ").map((item, index) => (
-                    <span
-                      key={`${item}-${index}`}
-                      className={`${
-                        index === 3 || index === 4 || index === 5 || index === 6
-                          ? "text-middle"
-                          : "text-[#000]"
-                      }`}
-                    > */}
-
-                      <span
-                     className="text-white-300 font-bold"
-                    >
-
-
-                      {data[0].heading}
-
-                    </span>
-
-
-
-                      
-                    {/* </span>
-                  ))
-                : null} */}
+          {/* Heading Container */}
+          <div className="flex flex-col w-full sm:w-1/2 justify-center items-start">
+            <h1 className="mb-4 text-4xl lg:text-5xl xl:text-6xl font-medium leading-normal">
+              <span className="text-middle font-bold animate-blinkColor ">
+                {data[0].heading}
+              </span>
             </h1>
+
             <p className="text-[#000] mt-4 mb-8 font-bold">
               {data && data.length ? data[0]?.summary : null}
             </p>
@@ -126,7 +96,6 @@ function ClientHomeView({ data }) {
                   whileTap={{ scale: 0.8, rotate: -360, borderRadius: "100%" }}
                 >
                   <a
-                    key={item.id}
                     href={socialLinks[item.id]}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -137,21 +106,26 @@ function ClientHomeView({ data }) {
               ))}
             </motion.div>
           </div>
-          <motion.div ref={containerRef} className="flex w-full justify-end">
+
+          {/* Image Container */}
+          <motion.div
+            ref={containerRef}
+            className="relative bg-secondary w-full sm:w-1/2 justify-center p-4"
+          >
             <motion.div
               drag
               dragConstraints={containerRef}
-              className="w-[400px] h-[400px] relative bg-secondary"
+              className="relative w-full max-w-[500px] h-[500px] animate-border-run" // Apply the animated-border class
             >
-              <div className="w-[400px] h-[400px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] absolute"></div>
+              <div className="w-full h-full absolute inset-0">
+                {/* Removed aspect ratio utility */}
+              </div>
               <Image
                 src={aiImage}
                 alt="Profile Picture"
-                layout="responsive"
+                layout="fill"
                 quality={100}
-                height={300}
-                width={300}
-                className="absolute top-[-15px]"
+                className="object-cover absolute inset-0"
               />
             </motion.div>
           </motion.div>
@@ -160,4 +134,5 @@ function ClientHomeView({ data }) {
     </div>
   );
 }
+
 export default dynamic(() => Promise.resolve(ClientHomeView), { ssr: false });
