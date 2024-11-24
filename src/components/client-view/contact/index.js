@@ -92,7 +92,7 @@ function ClientContactView() {
               {controls.map((controlItem, index) => (
                 <div key={index} className="p-2 w-full">
                   <div className="relative">
-                    <label className="text-sm text-[#000]">
+                    <label className="text-sm text-middle">
                       {controlItem.label}
                     </label>
                     {controlItem.name === "message" ? (
@@ -106,7 +106,7 @@ function ClientContactView() {
                             [controlItem.name]: e.target.value,
                           })
                         }
-                        className="w-full border-middle border-[2px] bg-[#ffffff] rounded h-32 text-base outline-none text-[#000000] py-1 px-3 resize-none leading-6"
+                        className="w-full border-middle border-[2px] bg-primary rounded h-32 text-base outline-none text-white-300 py-1 px-3 resize-none leading-6"
                       />
                     ) : (
                       <input
@@ -119,7 +119,7 @@ function ClientContactView() {
                             [controlItem.name]: e.target.value,
                           })
                         }
-                        className="w-full border-middle border-[2px] bg-[#ffffff] rounded text-base outline-none text-[#000000] py-1 px-3 leading-6"
+                        className="w-full border-middle border-[2px] bg-primary rounded text-base outline-none text-white-300 py-1 px-3 leading-6"
                       />
                     )}
                   </div>

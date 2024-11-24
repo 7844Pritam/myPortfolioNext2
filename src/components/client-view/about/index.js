@@ -96,13 +96,13 @@ function ClientAboutView({ data }) {
             {headingText.split(" ").map((item, index) => (
               <span
                 key={index}
-                className={`${index === 6 ? "text-primary" : "text-primary"}`}
+                className={`${index === 6 ? "text-middle" : "text-primary"}`}
               >
                 {item}{" "}
               </span>
             ))}
           </h1>
-          <p className="text-[#000] mt-4 mb-8 font-bold">{data?.aboutme}</p>
+          <p className="text-middle/60 text-2xl mt-4 mb-8 font-bold">{data?.aboutme}</p>
         </div>
       </AnimationWrapper>
       <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-2 gap-8">
@@ -123,17 +123,17 @@ function ClientAboutView({ data }) {
             variants={setVariants}
             className="grid gap-4 grid-cols-3 h-full max-h-[200px] w-full"
           >
-            {/* {data?.skills.split(",").map((skill, skillIndex) => (
+            {data?.skills.split(",").map((skill, skillIndex) => (
               <motion.div
                 className="w-full flex justify-center items-center"
                 variants={skillItemVariant}
                 key={`skill-${skillIndex}`} // Using unique keys here
               >
-                <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[160px] px-6 border-[2px] border-middle bg-[#fff] text-[#000] font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-main transition-all outline-none">
+                <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[160px] px-6 border-[2px] border-middle bg-primary text-middle font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-main transition-all outline-none">
                   {skill}
                 </button>
               </motion.div>
-            ))} */}
+            ))}
           </motion.div>
         </AnimationWrapper>
       </div>

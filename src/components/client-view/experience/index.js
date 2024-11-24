@@ -14,11 +14,10 @@ import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 function ClientExperienceAndEducationView({ educationData, experienceData }) {
-  // console.log(educationData, experienceData, "experienceData");
 
   return (
     <div
-      className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 px-6 sm:px-8 lg:px-16 mx-auto"
+      className="max-w-screen-xl mt-24 mb-6 sm:mt-14 sm:mb-14 md:px-6 lg:px-16 mx-auto"
       id="experience"
     >
       <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-2 gap-8  ">
@@ -40,40 +39,40 @@ function ClientExperienceAndEducationView({ educationData, experienceData }) {
             </div>
           </AnimationWrapper>
           <AnimationWrapper>
-            <div className="flex w-full">
-              <motion.div className="container">
-                <Timeline position="right">
-                  {experienceData && experienceData.length
-                    ? experienceData.map((experienceItem, index) => (
-                        <TimelineItem key={`experience-${index}`}>
-                          <TimelineSeparator>
-                            <TimelineDot className="bg-middle" />
-                            <TimelineConnector className="bg-middle" />
-                          </TimelineSeparator>
-                          <TimelineContent>
-                            <div className="border-[2px] p-4 rounded-[8px] shadow-lg mt-[14px]  bg-primary ml-[16px]">
-                              <p className="font-bold text-middle">
-                                {experienceItem.duration}
-                              </p>
-                              <h3 className="font-extrabold mt-2 text-middle">
-                                {experienceItem.company},{" "}
-                                {experienceItem.location}
-                              </h3>
-                              <p className="font-extrabold mt-2 text-middle">
-                                {experienceItem.position}
-                              </p>
-                              <p className="font-extralight mt-2 text-middle">
-                                {experienceItem.jobprofile}
-                              </p>
-                            </div>
-                          </TimelineContent>
-                        </TimelineItem>
-                      ))
-                    : null}
-                </Timeline>
-              </motion.div>
-            </div>
-          </AnimationWrapper>
+  <div className="flex w-full justify-start">
+    <motion.div className="container">
+      <Timeline position="right">
+        {experienceData && experienceData.length
+          ? experienceData.map((experienceItem, index) => (
+              <TimelineItem key={`experience-${index}`}>
+                <TimelineSeparator>
+                  <TimelineDot className="bg-middle" />
+                  <TimelineConnector className="bg-middle" />
+                </TimelineSeparator>
+                <TimelineContent>
+                  <div className="border-[1px] border-primary p-4 rounded-[8px] shadow-lg mt-[14px] bg-primary ml-[16px]">
+                    <p className="font-bold text-middle">
+                      {experienceItem.duration}
+                    </p>
+                    <h3 className="font-extrabold mt-2 text-middle">
+                      {experienceItem.company}, {experienceItem.location}
+                    </h3>
+                    <p className="font-extrabold mt-2 text-middle">
+                      {experienceItem.position}
+                    </p>
+                    <p className="font-extralight mt-2 text-middle">
+                      {experienceItem.jobprofile}
+                    </p>
+                  </div>
+                </TimelineContent>
+              </TimelineItem>
+            ))
+          : null}
+      </Timeline>
+    </motion.div>
+  </div>
+</AnimationWrapper>
+
         </div>
         <div className="flex flex-col gap-5">
           <AnimationWrapper className={"py-6 sm:py-16"}>

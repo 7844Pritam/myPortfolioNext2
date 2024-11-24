@@ -24,7 +24,7 @@ import dynamic from "next/dynamic";
             {"My Projects".split(" ").map((item, index) => (
               <span
                 key={`word-${index}`}
-                className={`${index === 1 ? "text-middle" : "text-[#000]"}`}
+                className={`${index === 1 ? "text-middle" : "text-primary"}`}
               >
                 {item}{" "}
               </span>
@@ -64,7 +64,7 @@ import dynamic from "next/dynamic";
                   <div className="flex p-4 flex-col xl:flex-row w-full items-stretch xl:items-center">
                     <div className="flex order-2 xl:order-1">
                       <div className="flex flex-col">
-                        <h3 className="text-3xl text-black-600 capitalize font-extrabold">
+                        <h3 className="text-3xl text-middle capitalize font-extrabold">
                           {item.name}
                         </h3>
                         <p className="text-sm mt-2 text-black-500 capitalize font-bold">
@@ -76,7 +76,7 @@ import dynamic from "next/dynamic";
                               className="w-full flex justify-start items-center"
                               key={`${techItem.id}-${techIndex}`}
                             >
-                              <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[120px]  px-6 border-[2px] border-middle bg-[#fff] text-[#000] font-semibold rounded-lg text-xs tracking-widest hover:border-[#426566] transition-all outline-none">
+                              <button className="whitespace-nowrap text-ellipsis overflow-hidden py-3 w-[120px]  px-6 border-[2px] border-middle bg-primary text-middle font-semibold rounded-lg text-xs tracking-widest hover:border-[#426566] transition-all outline-none">
                                 {techItem}
                               </button>
                             </div>

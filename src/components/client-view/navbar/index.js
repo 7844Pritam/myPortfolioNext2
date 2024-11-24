@@ -83,7 +83,7 @@ function Navbar() {
                   smooth: true,
                 })
               }
-              className="py-3 px-6 border-[2px] bg-secondary border-primary text-primary font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-md transition-all outline-none"
+              className="py-3 px-6 border-[2px] bg-secondary border-primary text-middle font-semibold rounded-lg text-xl tracking-widest hover:shadow-green-md transition-all outline-none"
             >
               Contact Me
             </button>
@@ -91,7 +91,7 @@ function Navbar() {
         </nav>
       </header>
 
-      <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 px-4 sm:px-0 shadow-t">
+      <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20  shadow-t">
         <div className="bg-primary sm:px-0">
           <ul className="overflow-x-auto flex w-full justify-between items-center text-middle">
             <CreateMenus

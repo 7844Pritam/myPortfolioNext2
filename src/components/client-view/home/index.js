@@ -77,7 +77,7 @@ function ClientHomeView({ data }) {
               </span>
             </h1>
 
-            <p className="text-[#000] mt-4 mb-8 font-bold">
+            <p className="text-middle/60 text-2xl mt-4 mb-8 font-bold">
               {data && data.length ? data[0]?.summary : null}
             </p>
             <motion.div className="flex gap-3 cursor-pointer">
@@ -115,20 +115,19 @@ function ClientHomeView({ data }) {
             <motion.div
               drag
               dragConstraints={containerRef}
-              className="relative w-full max-w-[500px] h-[500px] animate-border-run" // Apply the animated-border class
+              className="relative w-full max-w-[500px] h-[500px] animate-border-run" // Keep the max-width and height as per your design
             >
-              <div className="w-full h-full absolute inset-0">
-                {/* Removed aspect ratio utility */}
-              </div>
               <Image
                 src={aiImage}
                 alt="Profile Picture"
-                layout="fill"
+                layout="fill"  // This ensures the image fills the parent container
+                objectFit="contain"  // Ensure the whole image is visible, without cropping
                 quality={100}
-                className="object-cover absolute inset-0"
+                className="object-contain inset-0"
               />
             </motion.div>
           </motion.div>
+
         </motion.div>
       </AnimationWrapper>
     </div>
